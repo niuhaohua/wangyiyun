@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Loading />
-    <songs-play-float/>
+    <Loading/>
+    <!-- <songs-play-float/> -->
     <keep-alive>
       <router-view v-if="$route.meta.keepAlive" />
     </keep-alive>
@@ -35,4 +35,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
+    
 </style>

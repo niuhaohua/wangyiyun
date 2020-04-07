@@ -1,13 +1,22 @@
 const state = {
-    loading: false
+    loading: false,
+    num: 0
 }
 
 const mutations = {
     LOADING_SHOW: (state) => {
-        state.loading = true
+        state.num++
+        if (state.num > 0) {
+            state.loading = true
+        }
     },
     LOADING_HIDE: (state) => {
-        state.loading = false
+
+        state.num--
+        console.log(state.num)
+        if (state.num === 0) {
+            state.loading = false
+        }
     }
 }
 

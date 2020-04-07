@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-loading class="loading" type="spinner" vertical size="24px" v-show="loading.loading">加载中···</van-loading>
+    <van-loading color="rgba(0,0,0,0.6)" class="loading" type="spinner" vertical size="24px" v-show="loading.loading">加载中···</van-loading>
   </div>
 </template>
 
@@ -37,5 +37,6 @@ export default {
   height: 100%;
   width: 100%;
   justify-content: center;
+  background: rgba(255,255,255,0.9);
 }
 </style>
