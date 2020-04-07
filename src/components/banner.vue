@@ -2,7 +2,10 @@
   <div class="banner">
     <div class="swiper-wrapper">
       <div v-for="(item,key) in list" :key="key" class="swiper-slide">
-        <img :src="item.imageUrl" alt />
+        <a :href="item.url">
+          <img :src="item.imageUrl" alt />
+        </a>
+        
       </div>
     </div>
     <div class="swiper-pagination"></div>

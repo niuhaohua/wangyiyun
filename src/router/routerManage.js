@@ -16,7 +16,13 @@ router.beforeEach(async (to, from, next) => {
     NProgress.start()
     const hasToken = getToken('token')
     if (hasToken) {
-        next()
+        if (to.path !== '/login') {
+            next()
+
+        } else {
+            next('/home')
+            to.meta.keepAlive = true
+        }
         NProgress.done()
     } else {
         if (whiteList.includes(to.path)) {

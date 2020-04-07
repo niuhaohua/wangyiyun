@@ -75,10 +75,10 @@ function apiAxios(method, url, params, success, failure) {
                             path: '/login'
                         })
                     }
-                    alert(res.data.msg)
+                    console.log(res.data.msg)
                 }
             } else {
-                alert(res.data)
+                console.log(res.data)
                 if (failure) {
                     failure(res.data)
                 }
@@ -86,7 +86,7 @@ function apiAxios(method, url, params, success, failure) {
         })
         .catch(function (err) {
             store.commit('LOADING_HIDE')
-            alert(err)
+            console.log(err)
             // window.alert('api error, HTTP CODE: ' + err)
         })
 }
