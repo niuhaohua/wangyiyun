@@ -1,4 +1,14 @@
 import Vue from 'vue'
+import {
+    Field
+} from 'vant';
+
+Vue.use(Field);
+import {
+    Form
+} from 'vant';
+
+Vue.use(Form);
 // 引入tab标签页
 import {
     Tab,
@@ -105,3 +115,17 @@ import {
 } from 'vant';
 
 Vue.use(Loading);
+
+import {
+    Col,
+    Row
+} from 'vant';
+
+Vue.use(Col);
+Vue.use(Row);
+
+import {
+    PullRefresh
+} from 'vant';
+
+Vue.use(PullRefresh);

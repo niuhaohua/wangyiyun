@@ -27,13 +27,17 @@
       <div class="tags">
         <van-tag v-for="(item,index) in sheetInfo.tags" plain :type="tagsType[index%4]">{{item}}</van-tag>
       </div>
-      <div class="description">
+      <div class="description" ref="descriptionDom">
         <span>简介：</span>
-        <p v-for="item in description">{{item}}</p>
+        <div class="descriptionContent" ref="descriptionContent">
+          <p v-for="item in description">{{item}}</p>
+        </div>
+
+        <div class="mask" v-show="mask"></div>
+        <span class="maskToggle" @click="maskToggle()">{{maskText}}</span>
       </div>
     </div>
-    <div class="h20"></div>
-
+    <div class="h10"></div>
     <song-list :song-list="songList" />
   </div>
 </template>
@@ -51,19 +55,21 @@ export default {
         description: '',
         coverImgUrl: '',
         createTime: null,
-        tags: []
+        tags: [],
+        descriptionH: 100,
       },
+      maskFlag: null,
+      maskText: '展开',
+      mask: true,
       creator: {},
       songList: [],
       description: [],
       sheetId: null,
       tagsType: ['primary', 'success', 'danger', 'warning']
     }
-
   },
 
   mounted() {
-    window.addEventListener('scroll', this.scrollToTop)
     this.sheetId = this.$route.query.sheetId ? this.$route.query.sheetId : 0
     this.getDetail(this.sheetId)
   },
@@ -80,13 +86,33 @@ export default {
           this.description = des.substring(1, des.length - 1).split('\\n')
           this.creator = res.playlist.creator
           this.songList = res.playlist.tracks
+          this.$nextTick(() => {
+            this.descriptionH = this.$refs.descriptionContent.clientHeight
+            this.$refs.descriptionDom.style.height = '100px'
+            this.maskFlag = true
+            this.maskText = '展开'
+            this.mask = true
+          })
         }
       }, err => {
-        console.log(err)
+
       })
     },
     onClickLeft() {
       this.$router.back()
+    },
+    maskToggle() {
+      if (this.maskFlag) {
+        console.log(this.descriptionH)
+        this.$refs.descriptionDom.style.height = (this.descriptionH + 70) + 'px'
+        this.maskText = '收起'
+      } else {
+        this.$refs.descriptionDom.style.height = '100px'
+        this.maskText = '展开'
+      }
+      this.maskFlag = !this.maskFlag
+      console.log(this.maskFlag, this.mask)
+      this.mask = this.maskFlag
     },
     scrollToTop(el) {
 
@@ -188,12 +214,45 @@ export default {
   background: #fff;
   z-index: 10000;
   color: #333;
+  overflow: hidden;
+  transition: height 0.3s;
 }
 .description p {
   margin-top: 10px;
 }
-.h20 {
-  height: 5px;
+.description .mask {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 1)
+  );
+}
+.description .maskToggle {
+  position: absolute;
+  display: block;
+  left: 50%;
+  margin-left: -50px;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  /* margin-top: 80px; */
+  bottom: 0;
+  font-size: 15px;
+  text-align: center;
+  color: #333;
+  z-index: 10001;
+}
+.h10 {
+  height: 10px;
   background: #eeeeee;
 }
 </style>

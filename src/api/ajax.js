@@ -1,7 +1,15 @@
 import store from '../store/index'
+import {
+    getToken
+} from '../plugins/token'
+import V from 'vue'
+import {
+    Toast
+} from 'vant';
 
 // 配置API接口地址
 var root = 'http://123.56.245.7:3000'
+// var root = 'http://localhost:3000'
 // 引用axios
 var axios = require('axios')
 // 自定义判断元素类型JS
@@ -32,11 +40,22 @@ function filterNull(o) {
  * @param  { Function } success 成功回调函数
  * @param  { Function } failure 失败回调函数
  */
+axios.interceptors.request.use(function (config) {
+    console.log(getToken('token'))
+    if (getToken('token')) {
+        config.headers['token'] = getToken('token')
+    }
+    return config
+}, function (error) {
+    return Promise.reject(error)
+})
+
 function apiAxios(method, url, params, success, failure) {
     store.commit('LOADING_SHOW')
     if (params) {
         params = filterNull(params)
     }
+
     axios({
             method: method,
             url: url,
@@ -48,21 +67,26 @@ function apiAxios(method, url, params, success, failure) {
         .then(function (res) {
             store.commit('LOADING_HIDE')
             if (res.status === 200) {
-                if (success) {
+                if (res.data.code === 200 && success) {
                     success(res.data)
+                } else {
+                    if (res.data.code == 301) {
+                        V.$router.push({
+                            path: '/login'
+                        })
+                    }
+                    alert(res.data.msg)
                 }
             } else {
+                alert(res.data)
                 if (failure) {
                     failure(res.data)
-                } else {
-                    window.alert('error: ' + JSON.stringify(res.data))
                 }
             }
         })
         .catch(function (err) {
-            setTimeout(() => {
-                store.commit('LOADING_HIDE')
-            }, 3000)
+            store.commit('LOADING_HIDE')
+            alert(err)
             // window.alert('api error, HTTP CODE: ' + err)
         })
 }

@@ -61,11 +61,7 @@ export default {
         offset: 0
       }, data => {
         this.list = data
-        console.log(this.list)
-        setTimeout(() => {
-          this.loading = false
-        }, 5000)
-
+        this.loading = false
       }, err => {
         console.log(err)
       })

@@ -1,8 +1,10 @@
 <template>
   <div>
-    <audio ref="audio" class="songs-play-float" controls autoplay loop>
-      <source :src="null" />您的浏览器不支持 audio 元素。
-    </audio>
+    <div >
+      <audio class="songs-play-float" ref="audio" controls autoplay loop>
+        <source :src="null" />您的浏览器不支持 audio 元素。
+      </audio>
+    </div>
   </div>
 </template>
 
@@ -16,14 +18,16 @@ export default {
   },
   data() {
     return {
+      flags: false,
+      position: { x: 0, y: 0 },
+      nx: '', ny: '', dx: '', dy: '', xPum: '', yPum: '',
     }
   },
   watch: {
     songs: {
       handler(newName, oldName) {
-        console.log(this.$refs)
         this.$nextTick(() => {
-          this.$refs.audio.src = 'https://music.163.com/song/media/outer/url?id='+this.songs.songsId
+          this.$refs.audio.src = 'https://music.163.com/song/media/outer/url?id=' + this.songs.songsId
         })
       },
       deep: true,
@@ -34,7 +38,7 @@ export default {
 
   },
   created() {
-   
+
   },
   methods: {
   },
@@ -47,9 +51,11 @@ export default {
 <style lang="css" scoped>
 .songs-play-float {
   position: fixed;
-  top: 400px;
-  right: 0;
-  width: 50%;
-  z-index: 9999;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99999;
+  height: 30px;
+  border-radius: 0;
 }
 </style>

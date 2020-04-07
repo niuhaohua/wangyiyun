@@ -133,6 +133,8 @@ export default {
   flex-wrap: wrap;
   /* align-content:space-around; */
   justify-content: flex-start;
+  height: 100%;
+  overflow: scroll;
 }
 .item {
   /* width: 23%; */
@@ -156,5 +158,7 @@ export default {
   border-radius: 20px;
   margin-right: 20px;
   margin-bottom: 20px;
+  color: #bfbfbf;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 </style>

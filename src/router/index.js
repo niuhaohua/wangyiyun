@@ -7,23 +7,52 @@ const routes = [{
     path: "/",
     name: "wrapper",
     component: Wrapper,
-    redirect: 'list',
+    redirect: 'home',
     children: [{
-      path: "list",
+      path: "home",
+      name: "home",
+      meta: {
+        // keepAlive: false
+      },
+      component: () => import('../views/home.vue'),
+    }]
+  },
+
+  {
+    path: "/login",
+    name: "login",
+    component: () => import('../views/login.vue'),
+  },
+
+  {
+    path: "/hotWall",
+    name: "wrapper",
+    component: Wrapper,
+    redirect: '/hotWall/list',
+    children: [{
+      path: "/hotWall/list",
       name: "list",
       meta: {
         partersName: 'list',
-        keepAlive:false
+        // keepAlive: false
       },
       component: () => import('../views/hotWall/list.vue'),
     }]
   },
   {
-    path: "/sheetDetail",
+    path: "/ranking",
     name: "wrapper",
     component: Wrapper,
-    redirect: '/sheetDetail/index',
-    children: []
+    redirect: '/ranking/toplist',
+    children: [{
+      path: "/ranking/toplist",
+      name: "toplist",
+      meta: {
+        partersName: 'ranking',
+        // keepAlive: false
+      },
+      component: () => import('../views/ranking/list.vue'),
+    }]
   },
   {
     path: "/songSheet",
@@ -33,11 +62,11 @@ const routes = [{
     children: [{
         path: "sheetList",
         name: "sheetList",
-        meta:{
+        meta: {
           partersName: 'songSheet',
-          keepAlive: true
+          // keepAlive: true
         },
-        
+
         component: () => import('../views/songSheet/sheetList.vue'),
       },
       {
@@ -45,7 +74,7 @@ const routes = [{
         name: "moreSheetList",
         meta: {
           partersName: 'songSheet',
-          keepAlive: false
+          // keepAlive: false
         },
         component: () => import('../views/songSheet/moreSheetList.vue'),
       },
@@ -54,7 +83,7 @@ const routes = [{
         name: "sheetDetail",
         meta: {
           partersName: 'songSheet',
-          keepAlive: false
+          // keepAlive: false
         },
         component: () => import('../views/songSheet/sheetDetail.vue'),
       }
@@ -64,7 +93,7 @@ const routes = [{
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
+  // base: process.env.BASE_URL,
   routes
 })
 
