@@ -114,7 +114,7 @@ export default {
   margin-top: 10px;
 }
 .ranking-item .song-list p {
-  font-size: 14px;
+  font-size: 12px;
   height: 30px;
   line-height: 30px;
 }
@@ -160,7 +160,7 @@ export default {
   border-radius: 5px;
 }
 .box p {
-  font-size: 14px;
+  font-size:12px;
   /* text-align: center; */
   margin-top: 5px;
 }
