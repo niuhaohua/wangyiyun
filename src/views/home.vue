@@ -235,10 +235,10 @@ export default {
 .tag {
   font-size: 13px;
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 .tag-icon {
-  font-size: 40px;
+  font-size: 30px;
   color: red;
 }
 .title {

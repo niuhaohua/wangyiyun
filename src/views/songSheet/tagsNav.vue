@@ -56,7 +56,7 @@ export default {
   width: 30px;
   height: 44px;
   background: #fff;
-  opacity: 0.6;
+  opacity: 0;
   /* background: linear-gradient(to right,rgba(225,225,225,1),rgba(225,225,225,1)) */
 }
 .more {

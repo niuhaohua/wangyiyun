@@ -67,17 +67,17 @@ export default {
 
 <style lang="less" scoped>
 .swiper-slide {
-  width: 100px;
+  width: 90px;
   margin-right: 10px;
 }
 .swiper-slide img {
   display: block;
-  width: 100px;
+  width: 90px;
   border-radius: 10px;
   margin: 0 auto;
 }
 .swiper-slide p {
-  width: 100px;
+  width: 90px;
   margin: 0 auto;
   margin-top: 5px;
   font-size: 12px;

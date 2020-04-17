@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <van-nav-bar
-      title="村西头杂货铺"
+      title="歌单列表"
       :fixed="true"
       left-text="返回"
       right-text="按钮"
