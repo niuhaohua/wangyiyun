@@ -12,7 +12,13 @@
     />
 
     <div class="title">官方榜</div>
-    <div class="ranking-item" v-for="(item,y) in list" v-if="item.tracks.length > 0" :key="y" @click="detail(item)">
+    <div
+      class="ranking-item"
+      v-for="(item,y) in list"
+      v-if="item.tracks.length > 0"
+      :key="y"
+      @click="detail(item)"
+    >
       <img v-lazy="item.coverImgUrl" alt />
       <div class="update">{{item.updateFrequency}}</div>
       <div class="song-list">
@@ -110,8 +116,11 @@ export default {
 }
 .ranking-item .song-list {
   float: left;
+  width: 230px;
   margin-left: 10px;
   margin-top: 10px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .ranking-item .song-list p {
   font-size: 12px;
@@ -160,7 +169,7 @@ export default {
   border-radius: 5px;
 }
 .box p {
-  font-size:12px;
+  font-size: 12px;
   /* text-align: center; */
   margin-top: 5px;
 }

@@ -41,7 +41,6 @@ function filterNull(o) {
  * @param  { Function } failure 失败回调函数
  */
 axios.interceptors.request.use(function (config) {
-    console.log(getToken('token'))
     if (getToken('token')) {
         config.headers['token'] = getToken('token')
     }
@@ -75,10 +74,8 @@ function apiAxios(method, url, params, success, failure) {
                             path: '/login'
                         })
                     }
-                    console.log(res.data.msg)
                 }
             } else {
-                console.log(res.data)
                 if (failure) {
                     failure(res.data)
                 }

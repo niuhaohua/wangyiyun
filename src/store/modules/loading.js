@@ -11,9 +11,7 @@ const mutations = {
         }
     },
     LOADING_HIDE: (state) => {
-
         state.num--
-        console.log(state.num)
         if (state.num === 0) {
             state.loading = false
         }

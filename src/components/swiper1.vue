@@ -37,7 +37,6 @@ export default {
     list: {
       handler(newName, oldName) {
         this.list = newName
-        console.log(this.list)
         this.$nextTick(() => {
           this.initSwiper()
         })
