@@ -28,7 +28,7 @@
             </van-col>
             <van-col span="6" @click="toPath('/songSheet')">
               <div class="tag-icon">
-                <van-icon name="photo"/>
+                <van-icon name="photo" />
               </div>
               <p>图片</p>
             </van-col>
@@ -50,7 +50,7 @@
         <div class="more" @click="toPath('/songSheet')">查看更多</div>
       </div>
       <div class="swiper-box">
-        <Swiper1 :dom="'swiper1'" :list="resourceList" />
+        <Swiper1 :dom="'swiper1-1'" :list="resourceList" />
       </div>
 
       <div class="content title clearfix">
@@ -58,7 +58,7 @@
         <div class="more" @click="toPath('/songSheet')">查看更多</div>
       </div>
       <div class="swiper-box">
-        <Swiper2 :dom="'swiper2'" :list="songsList" />
+        <Swiper2 :dom="'swiper2-1'" :list="songsList" />
       </div>
 
       <div class="content title clearfix">
@@ -66,7 +66,15 @@
         <div class="more" @click="toPath('/songSheet')">查看更多</div>
       </div>
       <div class="swiper-box">
-        <Swiper1 :dom="'swiper1'" :list="sceneData.list" />
+        <Swiper1 :dom="'swiper1-2'" :list="sceneData.list" />
+      </div>
+
+      <div class="content title clearfix">
+        <div class="value">新歌速递</div>
+        <div class="more" @click="toPath('/songSheet')">查看更多</div>
+      </div>
+      <div class="swiper-box">
+        <Swiper1 :dom="'swiper1-3'" :list="newSongsList" />
       </div>
     </van-pull-refresh>
   </div>
@@ -84,9 +92,10 @@ export default {
   },
   data() {
     return {
+      isLoading: false,
       resourceList: [],
       songsList: [],
-      isLoading: false,
+      newSongsList: [],
       sceneData: {
         list: [],
         title: ''
@@ -98,14 +107,31 @@ export default {
     this.resource()
     this.songs()
     this.newsong()
-    this.scene()
+    this.scene(),
+    this.topsong(),
+    this.topicdetail()
+    
     // this.songsSheetList()
   },
   created() {
   },
   methods: {
+    topicdetail() {
+      this.$api.homeApi.topicdetail({ actId:74822261 }, data => {
+        console.log(data)
+      }, err => {
+
+      })
+    },
     topic() {
       this.$api.homeApi.topic({ limit: 30, offset: 30 }, data => {
+        console.log(data)
+      }, err => {
+
+      })
+    },
+    topsong() {
+      this.$api.homeApi.topsong({ limit: 30, offset: 30 }, data => {
         console.log(data)
       }, err => {
 
@@ -138,7 +164,7 @@ export default {
     },
     newsong() {
       this.$api.homeApi.newsong({}, data => {
-        console.log(data)
+        this.newSongsList = data.result
       }, err => {
       })
     },
@@ -278,7 +304,7 @@ export default {
 .swiper1,
 .swiper2,
 .swiper3 {
-  padding: 0 5%;
+  padding: 0 4%;
   margin-bottom: 30px;
 }
 </style>

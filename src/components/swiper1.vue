@@ -1,5 +1,5 @@
 <template>
-  <div :class="dom">
+  <div :class="[dom,'swiper1']">
     <div class="swiper-wrapper">
       <div v-for="(item,key) in list" :key="key" class="swiper-slide" @click="detail(item)">
         <img v-lazy="item.picUrl ||item.coverImgUrl" alt />

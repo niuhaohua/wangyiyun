@@ -103,7 +103,6 @@ export default {
     },
     maskToggle() {
       if (this.maskFlag) {
-        console.log(this.descriptionH)
         this.$refs.descriptionDom.style.height = (this.descriptionH + 70) + 'px'
         this.maskText = '收起'
       } else {
@@ -111,7 +110,6 @@ export default {
         this.maskText = '展开'
       }
       this.maskFlag = !this.maskFlag
-      console.log(this.maskFlag, this.mask)
       this.mask = this.maskFlag
     },
     scrollToTop(el) {

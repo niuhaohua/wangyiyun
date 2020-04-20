@@ -38,7 +38,6 @@ export default {
   methods: {
     getMoreCat() {
       this.$api.homeApi.catlist({}, res => {
-        console.log(res)
         this.list = res
       }, err => {
         console.log(err)

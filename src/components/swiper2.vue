@@ -1,5 +1,5 @@
 <template>
-  <div :class="dom">
+  <div :class="[dom,'swiper2']">
     <div class="swiper-wrapper">
       <div v-for="(item,key) in (data)" :key="key" class="swiper-slide">
         <div class="song-item" v-for="(s,index) in item" :key="index" @click="clickSongsList(s)">
@@ -56,7 +56,7 @@ export default {
     list: {
       handler(newName, oldName) {
         this.data = []
-        for (var i = 0; i < newName.length; i += 3) {
+        for (let i = 0; i < newName.length; i += 3) {
           this.data.push(newName.slice(i, i + 3));
         }
         this.$nextTick(() => {

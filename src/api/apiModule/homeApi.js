@@ -17,7 +17,6 @@ const hotwallList = (params, success, failure) => Ajax.get('/comment/hotwall/lis
 }, failure)
 
 // 所有歌单分类
-
 const catlist = (params, success, failure) => Ajax.get('/playlist/catlist', params, success, failure)
 
 // 获取热门歌单分类
@@ -35,6 +34,9 @@ const songsUrl = (params, success, failure) => Ajax.get('/song/url', params, suc
 
 // 热门话题(需登陆)
 const topic = (params, success, failure) => Ajax.get('/hot/topic', params, success,failure)
+// 热门话题(需登陆)
+const topicdetail = (params, success, failure) => Ajax.get('/hot/topic/list', params, success, failure)
+
 
 //每日推荐歌单（需登陆）
 const resource = (params, success, failure) => Ajax.get('/recommend/resource', params, success, failure)
@@ -44,6 +46,9 @@ const songs = (params, success, failure) => Ajax.get('/recommend/songs', params,
 
 // 推荐新音乐
 const newsong = (params, success, failure) => Ajax.get('/personalized/newsong', params, success, failure)
+
+// 新歌速递
+const topsong = (params, success, failure) => Ajax.get('/top/song', params, success, failure)
 
 // 排行榜榜单
 const toplist = (params, success, failure) => Ajax.get('/toplist/detail', params, success, failure)
@@ -64,5 +69,7 @@ export default {
     userDetail,
     newsong,
     catlist,
-    toplist
+    toplist,
+    topsong,
+    topicdetail
 }
