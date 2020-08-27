@@ -1,11 +1,13 @@
 <template>
   <div>
     <div ref="onload" class="box">
-      <div class="item" v-for="item in list" @click="detail(item)">
+      <div class="item" v-for="item in list">
+        <a class="a" :href="item.coverImgUrl" :download="item.coverImgUrl"></a>
         <img class="img" v-lazy="item.coverImgUrl" />
         <p>{{item.name}}</p>
       </div>
     </div>
+    <button @click="down">下载</button>
   </div>
 </template>
 
@@ -70,6 +72,13 @@ export default {
     },
     detail(item) {
       this.$router.push({ path: '/songSheet/sheetDetail', query: { sheetId: item.id } })
+    },
+    down(){
+      let list  = document.querySelectorAll('a')
+      for(let item of list){
+        console.log(item)
+        item.click()
+      }
     }
   },
   beforeDestroy() {

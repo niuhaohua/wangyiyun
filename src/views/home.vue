@@ -108,21 +108,13 @@ export default {
     this.songs()
     this.newsong()
     this.scene(),
-    this.topsong(),
-    this.topicdetail()
+    this.topsong()
     
     // this.songsSheetList()
   },
   created() {
   },
   methods: {
-    topicdetail() {
-      this.$api.homeApi.topicdetail({ actId:74822261 }, data => {
-        console.log(data)
-      }, err => {
-
-      })
-    },
     topic() {
       this.$api.homeApi.topic({ limit: 30, offset: 30 }, data => {
         console.log(data)

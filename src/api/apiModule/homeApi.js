@@ -34,9 +34,6 @@ const songsUrl = (params, success, failure) => Ajax.get('/song/url', params, suc
 
 // 热门话题(需登陆)
 const topic = (params, success, failure) => Ajax.get('/hot/topic', params, success,failure)
-// 热门话题(需登陆)
-const topicdetail = (params, success, failure) => Ajax.get('/hot/topic/list', params, success, failure)
-
 
 //每日推荐歌单（需登陆）
 const resource = (params, success, failure) => Ajax.get('/recommend/resource', params, success, failure)
@@ -71,5 +68,5 @@ export default {
     catlist,
     toplist,
     topsong,
-    topicdetail
+    
 }

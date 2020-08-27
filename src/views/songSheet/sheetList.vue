@@ -4,7 +4,7 @@
     <van-nav-bar title="歌单列表" :fixed="true" />
     <Tags-Nav class="tags" @cat="getCat" @popShow="popShow"></Tags-Nav>
     <div class="box">
-      <songs-sheet-list :tags="cat" :length="20" />
+      <songs-sheet-list :tags="cat" :length="100" />
     </div>
     <Popup :show="show" @cat="getCat" @closePopShow="closePopShow" />
   </div>
